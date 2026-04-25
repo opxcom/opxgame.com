@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Time Zone Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .clock {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+        }
+        .time-zone {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+        .time {
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock" id="utc">
+        <div class="time-zone">UTC</div>
+        <div class="time" id="time-utc"></div>
+    </div>
+    <div class="clock" id="est">
+        <div class="time-zone">EST</div>
+        <div class="time" id="time-est"></div>
+    </div>
+    <div class="clock" id="pst">
+        <div class="time-zone">PST</div>
+        <div class="time" id="time-pst"></div>
+    </div>
+    <div class="clock" id="ist">
+        <div class="time-zone">IST</div>
+        <div class="time" id="time-ist"></div>
+    </div>
+    <div class="clock" id="jst">
+        <div class="time-zone">JST</div>
+        <div class="time" id="time-jst"></div>
+    </div>
+    <div class="clock" id="cet">
+        <div class="time-zone">CET</div>
+        <div class="time" id="time-cet"></div>
+    </div>
+
+    <script>
+        function updateClocks() {
+            const nowUtc = new Date();
+            document.getElementById('time-utc').innerText = nowUtc.toISOString().slice(0, 19).replace('T', ' ');
+
+            const est = new Date(nowUtc.getTime() - 5 * 60 * 60 * 1000);
+            document.getElementById('time-est').innerText = est.toISOString().slice(0, 19).replace('T', ' ');
+
+            const pst = new Date(nowUtc.getTime() - 8 * 60 * 60 * 1000);
+            document.getElementById('time-pst').innerText = pst.toISOString().slice(0, 19).replace('T', ' ');
+
+            const ist = new Date(nowUtc.getTime() + 5.5 * 60 * 60 * 1000);
+            document.getElementById('time-ist').innerText = ist.toISOString().slice(0, 19).replace('T', ' ');
+
+            const jst = new Date(nowUtc.getTime() + 9 * 60 * 60 * 1000);
+            document.getElementById('time-jst').innerText = jst.toISOString().slice(0, 19).replace('T', ' ');
+
+            const cet = new Date(nowUtc.getTime() + 1 * 60 * 60 * 1000);
+            document.getElementById('time-cet').innerText = cet.toISOString().slice(0, 19).replace('T', ' ');
+        }
+
+        setInterval(updateClocks, 1000);
+        updateClocks();
+    </script>
+</body>
+</html>
