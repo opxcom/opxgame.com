@@ -1,0 +1,43 @@
+/* CSS Styling for OPX Game Website */
+
+/* Header Navigation */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+header nav a:hover {
+    background-color: red;
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(to right, #ff6a00, #ee0979);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+    }
+    .hero {
+        padding: 40px 10px;
+    }
+}
